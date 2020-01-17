@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <vector>
 #include <iostream>
 
@@ -18,6 +19,7 @@ public:
 
     SDL_Renderer *renderer;
     SDL_Window *window;
+    SDL_Texture* menuTexture;
 
     void load_pixels(std::vector <std::vector<Cell * > > *p);
     void clear_screen();
@@ -25,6 +27,9 @@ public:
     void Update();
     void drawBox(int x, int y, int width, int length, int flag);
     int generateGrid(int columns, int rows);
+
+    void load_menu();
+    void destroy_menu();
 
 protected:
 

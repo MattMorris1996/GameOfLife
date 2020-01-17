@@ -19,6 +19,7 @@ int main(void)
 
     Life board(COLUMNS, ROWS, RANDOM);
 
+    display.load_menu();
     //tell the display where the pixels are
     display.load_pixels(board.get_vector());
 
@@ -44,6 +45,7 @@ int main(void)
         if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT))
         {
             std::cout << "Mouse Button 1 (left) is pressed." << std::endl;
+            display.destroy_menu();
             start = 1;
         }
 

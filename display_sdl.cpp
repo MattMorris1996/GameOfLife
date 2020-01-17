@@ -13,6 +13,32 @@ Display::Display(int WIDTH, int HEIGHT)
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 
+void Display::load_menu(){
+    menuTexture = NULL;
+    SDL_Surface* menu = IMG_Load("GameOfLife.png");
+    if (menu == NULL)
+    {
+        printf("Unable to load image %s", SDL_GetError());
+    }
+    else 
+    {
+        menuTexture = SDL_CreateTextureFromSurface(renderer, menu);
+        if(menuTexture == NULL)
+        {
+            printf("unable to create texture %s", SDL_GetError());
+        }
+        SDL_FreeSurface(menu);
+    }
+
+    SDL_RenderCopy(renderer, menuTexture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+}
+
+void Display::destroy_menu(){
+    SDL_DestroyTexture(menuTexture);
+    menuTexture = NULL;
+}
+
 void Display::load_pixels(std::vector<std::vector<Cell *>> *p)
 {
     pixel_buffer = p;

@@ -1,5 +1,5 @@
 CC = g++
-LINK_TARGET = robot-maze
+LINK_TARGET = game-of-life
 
 SDL_CFLAGS = `sdl2-config --cflags`
 SDL_LDFLAGS = `sdl2-config --libs` -lSDL2_image -lm
